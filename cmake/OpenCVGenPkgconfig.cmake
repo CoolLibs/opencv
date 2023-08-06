@@ -104,7 +104,7 @@ add_dependencies(developer_scripts gen-pkgconfig)
 
 
 if((UNIX AND NOT ANDROID) OR MINGW)
-  install(FILES ${CMAKE_BINARY_DIR}/unix-install/${OPENCV_PC_FILE_NAME} DESTINATION ${OPENCV_LIB_INSTALL_PATH}/pkgconfig COMPONENT dev)
+#   install(FILES ${CMAKE_BINARY_DIR}/unix-install/${OPENCV_PC_FILE_NAME} DESTINATION ${OPENCV_LIB_INSTALL_PATH}/pkgconfig COMPONENT dev)
 endif()
 
 # =============================================================================

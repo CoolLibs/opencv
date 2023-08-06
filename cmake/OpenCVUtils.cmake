@@ -1231,11 +1231,11 @@ endfunction()
 
 # add install command
 function(ocv_install_target)
-  if(APPLE_FRAMEWORK AND BUILD_SHARED_LIBS)
-    install(TARGETS ${ARGN} FRAMEWORK DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH})
-  else()
-    install(TARGETS ${ARGN})
-  endif()
+#   if(APPLE_FRAMEWORK AND BUILD_SHARED_LIBS)
+#     install(TARGETS ${ARGN} FRAMEWORK DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH})
+#   else()
+#     install(TARGETS ${ARGN})
+#   endif()
 
   set(isPackage 0)
   unset(__package)
@@ -1317,17 +1317,17 @@ function(ocv_install_target)
 
 #          message(STATUS "Adding PDB file installation rule: target=${__target} dst=${__dst} component=${__pdb_install_component}")
           if("${__target_type}" STREQUAL "SHARED_LIBRARY" OR "${__target_type}" STREQUAL "MODULE_LIBRARY")
-            install(FILES "$<TARGET_PDB_FILE:${__target}>" DESTINATION "${__dst}"
-                COMPONENT ${__pdb_install_component} OPTIONAL ${__pdb_exclude_from_all})
+            # install(FILES "$<TARGET_PDB_FILE:${__target}>" DESTINATION "${__dst}"
+            #     COMPONENT ${__pdb_install_component} OPTIONAL ${__pdb_exclude_from_all})
           else()
             # There is no generator expression similar to TARGET_PDB_FILE and TARGET_PDB_FILE can't be used: https://gitlab.kitware.com/cmake/cmake/issues/16932
             # However we still want .pdb files like: 'lib/Debug/opencv_core341d.pdb' or '3rdparty/lib/zlibd.pdb'
-            install(FILES "$<TARGET_PROPERTY:${__target},ARCHIVE_OUTPUT_DIRECTORY>/$<CONFIG>/$<IF:$<BOOL:$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_DEBUG>>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_DEBUG>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME>>.pdb"
-                DESTINATION "${__dst}" CONFIGURATIONS Debug
-                COMPONENT ${__pdb_install_component} OPTIONAL ${__pdb_exclude_from_all})
-            install(FILES "$<TARGET_PROPERTY:${__target},ARCHIVE_OUTPUT_DIRECTORY>/$<CONFIG>/$<IF:$<BOOL:$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_RELEASE>>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_RELEASE>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME>>.pdb"
-                DESTINATION "${__dst}" CONFIGURATIONS Release
-                COMPONENT ${__pdb_install_component} OPTIONAL ${__pdb_exclude_from_all})
+            # install(FILES "$<TARGET_PROPERTY:${__target},ARCHIVE_OUTPUT_DIRECTORY>/$<CONFIG>/$<IF:$<BOOL:$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_DEBUG>>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_DEBUG>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME>>.pdb"
+            #     DESTINATION "${__dst}" CONFIGURATIONS Debug
+            #     COMPONENT ${__pdb_install_component} OPTIONAL ${__pdb_exclude_from_all})
+            # install(FILES "$<TARGET_PROPERTY:${__target},ARCHIVE_OUTPUT_DIRECTORY>/$<CONFIG>/$<IF:$<BOOL:$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_RELEASE>>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME_RELEASE>,$<TARGET_PROPERTY:${__target},COMPILE_PDB_NAME>>.pdb"
+            #     DESTINATION "${__dst}" CONFIGURATIONS Release
+            #     COMPONENT ${__pdb_install_component} OPTIONAL ${__pdb_exclude_from_all})
           endif()
         else()
           message(WARNING "PDB files installation is not supported (need CMake >= 3.1.0)")
@@ -1347,8 +1347,8 @@ function(ocv_install_3rdparty_licenses library)
     get_filename_component(name "${filename}" NAME)
     install(
       FILES "${filepath}"
-      DESTINATION "${OPENCV_LICENSES_INSTALL_PATH}"
-      COMPONENT licenses
+      DESTINATION license/opencv #"${OPENCV_LICENSES_INSTALL_PATH}"
+    #   COMPONENT licenses
       RENAME "${library}-${name}"
     )
   endforeach()
