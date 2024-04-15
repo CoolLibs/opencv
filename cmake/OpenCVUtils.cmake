@@ -977,9 +977,9 @@ macro(ocv_finalize_status)
   endif()
 
   if(UNIX)
-    install(FILES "${OpenCV_SOURCE_DIR}/platforms/scripts/valgrind.supp"
-                  "${OpenCV_SOURCE_DIR}/platforms/scripts/valgrind_3rdparty.supp"
-            DESTINATION "${OPENCV_OTHER_INSTALL_PATH}" COMPONENT "dev")
+    # install(FILES "${OpenCV_SOURCE_DIR}/platforms/scripts/valgrind.supp"
+    #               "${OpenCV_SOURCE_DIR}/platforms/scripts/valgrind_3rdparty.supp"
+    #         DESTINATION "${OPENCV_OTHER_INSTALL_PATH}" COMPONENT "dev")
   endif()
 endmacro()
 
@@ -1348,7 +1348,6 @@ function(ocv_install_3rdparty_licenses library)
     install(
       FILES "${filepath}"
       DESTINATION "${OPENCV_LICENSES_INSTALL_PATH}"
-      COMPONENT licenses
       RENAME "${library}-${name}"
     )
   endforeach()

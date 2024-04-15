@@ -171,7 +171,7 @@ get_protobuf_version(Protobuf_VERSION "${PROTOBUF_ROOT}/src")
 set(Protobuf_VERSION ${Protobuf_VERSION} CACHE INTERNAL "" FORCE)
 
 if(NOT BUILD_SHARED_LIBS)
-  ocv_install_target(libprotobuf EXPORT OpenCVModules ARCHIVE DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH} COMPONENT dev OPTIONAL)
+#   ocv_install_target(libprotobuf EXPORT OpenCVModules ARCHIVE DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH} COMPONENT dev OPTIONAL)
 endif()
 
 ocv_install_3rdparty_licenses(protobuf LICENSE README.md)

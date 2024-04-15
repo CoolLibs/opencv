@@ -307,9 +307,9 @@ if(DOXYGEN_FOUND)
 
   add_dependencies(opencv_docs doxygen)
 
-  install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doxygen/html
-    DESTINATION "${OPENCV_DOC_INSTALL_PATH}"
-    COMPONENT "docs" OPTIONAL
-    ${compatible_MESSAGE_NEVER}
-  )
+#   install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doxygen/html
+#     DESTINATION "${OPENCV_DOC_INSTALL_PATH}"
+#     COMPONENT "docs" OPTIONAL
+#     ${compatible_MESSAGE_NEVER}
+#   )
 endif()

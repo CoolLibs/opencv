@@ -1061,15 +1061,15 @@ macro(_ocv_create_module)
   get_target_property(_target_type ${the_module} TYPE)
   if(OPENCV_MODULE_${the_module}_CLASS STREQUAL "PUBLIC" AND
       ("${_target_type}" STREQUAL "SHARED_LIBRARY" OR (NOT BUILD_SHARED_LIBS OR NOT INSTALL_CREATE_DISTRIB)))
-    ocv_install_target(${the_module} EXPORT OpenCVModules OPTIONAL
-      RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT libs
-      LIBRARY DESTINATION ${OPENCV_LIB_INSTALL_PATH} COMPONENT libs NAMELINK_SKIP
-      ARCHIVE DESTINATION ${OPENCV_LIB_ARCHIVE_INSTALL_PATH} COMPONENT dev
-      )
+    # ocv_install_target(${the_module} EXPORT OpenCVModules OPTIONAL
+    #   RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT libs
+    #   LIBRARY DESTINATION ${OPENCV_LIB_INSTALL_PATH} COMPONENT libs NAMELINK_SKIP
+    #   ARCHIVE DESTINATION ${OPENCV_LIB_ARCHIVE_INSTALL_PATH} COMPONENT dev
+    #   )
   endif()
   if("${_target_type}" STREQUAL "SHARED_LIBRARY")
-    install(TARGETS ${the_module}
-      LIBRARY DESTINATION ${OPENCV_LIB_INSTALL_PATH} COMPONENT dev NAMELINK_ONLY)
+    # install(TARGETS ${the_module}
+    #   LIBRARY DESTINATION ${OPENCV_LIB_INSTALL_PATH} COMPONENT dev NAMELINK_ONLY)
   endif()
 
   # only "public" headers need to be installed
@@ -1079,7 +1079,7 @@ macro(_ocv_create_module)
     foreach(hdr ${OPENCV_MODULE_${the_module}_HEADERS})
       string(REGEX REPLACE "^.*opencv2/" "opencv2/" hdr2 "${hdr}")
       if(NOT hdr2 MATCHES "private" AND hdr2 MATCHES "^(opencv2/?.*)/[^/]+.h(..)?$" )
-        install(FILES ${hdr} OPTIONAL DESTINATION "${OPENCV_INCLUDE_INSTALL_PATH}/${CMAKE_MATCH_1}" COMPONENT dev)
+        # install(FILES ${hdr} OPTIONAL DESTINATION "${OPENCV_INCLUDE_INSTALL_PATH}/${CMAKE_MATCH_1}" COMPONENT dev)
       else()
         #message("Header file will be NOT installed: ${hdr}")
       endif()

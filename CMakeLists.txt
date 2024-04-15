@@ -1113,16 +1113,16 @@ if(NOT OPENCV_LICENSE_FILE)
 endif()
 
 # for UNIX it does not make sense as LICENSE and readme will be part of the package automatically
-if(ANDROID OR NOT UNIX)
+# if(ANDROID OR NOT UNIX)
   install(FILES ${OPENCV_LICENSE_FILE}
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
-        DESTINATION ./ COMPONENT libs)
-  if(OPENCV_README_FILE)
-    install(FILES ${OPENCV_README_FILE}
-            PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
-            DESTINATION ./ COMPONENT libs)
-  endif()
-endif()
+        DESTINATION ./license/opencv)
+#   if(OPENCV_README_FILE)
+#     install(FILES ${OPENCV_README_FILE}
+#             PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+#             DESTINATION ./license)
+#   endif()
+# endif()
 
 if(COMMAND ocv_pylint_finalize)
   ocv_pylint_add_directory(${CMAKE_CURRENT_LIST_DIR}/modules/python/test)

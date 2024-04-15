@@ -8,7 +8,7 @@ target_include_directories(openvx_hal PUBLIC
 target_link_libraries(openvx_hal PUBLIC ${OPENVX_LIBRARIES})
 set_target_properties(openvx_hal PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${3P_LIBRARY_OUTPUT_PATH})
 if(NOT BUILD_SHARED_LIBS)
-  ocv_install_target(openvx_hal EXPORT OpenCVModules ARCHIVE DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH} COMPONENT dev)
+#   ocv_install_target(openvx_hal EXPORT OpenCVModules ARCHIVE DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH} COMPONENT dev)
 endif()
 
 set(OPENVX_HAL_FOUND TRUE CACHE INTERNAL "")

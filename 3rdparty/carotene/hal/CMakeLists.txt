@@ -87,7 +87,7 @@ add_library(tegra_hal STATIC $<TARGET_OBJECTS:carotene_objs> "dummy.cpp")
 set_target_properties(tegra_hal PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${3P_LIBRARY_OUTPUT_PATH})
 set(OPENCV_SRC_DIR "${CMAKE_SOURCE_DIR}")
 if(NOT BUILD_SHARED_LIBS)
-  ocv_install_target(tegra_hal EXPORT OpenCVModules ARCHIVE DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH} COMPONENT dev)
+#   ocv_install_target(tegra_hal EXPORT OpenCVModules ARCHIVE DESTINATION ${OPENCV_3P_LIB_INSTALL_PATH} COMPONENT dev)
 endif()
 target_include_directories(tegra_hal PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${OPENCV_SRC_DIR}/modules/core/include)
 

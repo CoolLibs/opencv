@@ -102,19 +102,19 @@ function(ocv_gen_config TMP_DIR NESTED_PATH ROOT_NAME)
   configure_file("${OpenCV_SOURCE_DIR}/cmake/templates/OpenCVConfig-version.cmake.in" "${TMP_DIR}/OpenCVConfig-version.cmake" @ONLY)
 
   configure_file("${OpenCV_SOURCE_DIR}/cmake/templates/OpenCVConfig.cmake.in" "${__tmp_nested}/OpenCVConfig.cmake" @ONLY)
-  install(EXPORT OpenCVModules DESTINATION "${__install_nested}" FILE OpenCVModules.cmake COMPONENT dev)
-  install(FILES
-      "${TMP_DIR}/OpenCVConfig-version.cmake"
-      "${__tmp_nested}/OpenCVConfig.cmake"
-      DESTINATION "${__install_nested}" COMPONENT dev)
+#   install(EXPORT OpenCVModules DESTINATION "${__install_nested}" FILE OpenCVModules.cmake COMPONENT dev)
+#   install(FILES
+#       "${TMP_DIR}/OpenCVConfig-version.cmake"
+#       "${__tmp_nested}/OpenCVConfig.cmake"
+#       DESTINATION "${__install_nested}" COMPONENT dev)
 
   if(ROOT_NAME)
     # Root config file
     configure_file("${OpenCV_SOURCE_DIR}/cmake/templates/${ROOT_NAME}" "${TMP_DIR}/OpenCVConfig.cmake" @ONLY)
-    install(FILES
-        "${TMP_DIR}/OpenCVConfig-version.cmake"
-        "${TMP_DIR}/OpenCVConfig.cmake"
-        DESTINATION "${OPENCV_CONFIG_INSTALL_PATH}" COMPONENT dev)
+    # install(FILES
+    #     "${TMP_DIR}/OpenCVConfig-version.cmake"
+    #     "${TMP_DIR}/OpenCVConfig.cmake"
+    #     DESTINATION "${OPENCV_CONFIG_INSTALL_PATH}" COMPONENT dev)
   endif()
 endfunction()
 
